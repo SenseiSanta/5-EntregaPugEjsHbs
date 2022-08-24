@@ -1,0 +1,20 @@
+// Tabla
+div
+    h2(style='color:crimson;') Historial
+    br
+    if DB_PRODUCTOS.length > 0
+        div(class='table-responsive')
+            table.table.table-dark
+                tr(style='color: yellow;')
+                    th Producto
+                    th Precio
+                    th Imagen
+                each producto in DB_PRODUCTOS
+                    tr 
+                        td=producto.producto
+                        td=producto.precio
+                        td
+                            img(width='30px' src=producto.img alt='img producto')
+    else
+        h3(class='alert alert-warning') No se encontraron productos
+    a(href='/formulario') Ingresar Producto
