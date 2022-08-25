@@ -1,15 +1,19 @@
  <!-- Tabla -->
  <div>
-    <h2 style="color:crimson;">Historial</h2>
-    <div class="table-responsive">
-        <table class="table table-dark">
-            <tr style="color: yellow;"> <th>Producto</th> <th>Precio</th> <th>Imagen</th> </tr>
-            <% DB_PRODUCTOS.forEach(function(producto) { %>
-                <tr>
-                    <th> <%= producto.producto %> <th><%= producto.precio %></th> <th> <img src="<%= producto.img %>" width="30px" alt=""></th> 
-                </tr>
-            <% }); %> 
-        </table>
-    </div>
+    <% if (DB_PRODUCTOS.length > 0) { %>
+        <h2 style="color:crimson;">Historial</h2>
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <tr style="color: yellow;"> <th>Producto</th> <th>Precio</th> <th>Imagen</th> </tr>
+                <% DB_PRODUCTOS.forEach(function(producto) { %>
+                    <tr>
+                        <th> <%= producto.producto %> <th><%= producto.precio %></th> <th> <img src="<%= producto.img %>" width="30px" alt=""></th> 
+                    </tr>
+                <% }); %> 
+            </table>
+        </div>
+    <% } else if (DB_PRODUCTOS){ %>
+        <h3 class='alert alert-warning'> No hay productos </h3>
+    <% } %>
     <a href="/formulario"> Ingresar Producto </a>
 </div>
